@@ -1,17 +1,19 @@
-# layrz_ui_i18n
+# layrz_ui_extensions
 
-An i18n adapter binding `layrz_ui`'s localization contract to the `layrz_i18n` translation engine.
+Adapters and extensions bridging Layrz packages into `layrz_ui` — including the `layrz_i18n` binding and conversions from `layrz_sdk` models into layrz_ui types.
 
 > **AI-assisted code notice**
 > This package was developed with AI assistance. If you run into any issue or unexpected behavior, feel free to open a Pull Request — contributions are always welcome!
 
 ---
 
-## What is layrz_ui_i18n?
+## What is layrz_ui_extensions?
 
-`layrz_ui` declares a complete localization contract (`LayrzUiL10n`) with 133 English strings covering all user-facing text in the design system. However, **`layrz_ui` itself has no dependency on any i18n package** — that decoupling is intentional. It allows the design system to remain lightweight and lets apps choose their own localization strategy.
+`layrz_ui_extensions` is a collection of adapters and type converters that bridge Layrz ecosystem packages into `layrz_ui`, keeping the design system lightweight and decoupled from heavy dependencies.
 
-`layrz_ui_i18n` bridges this gap by providing an adapter that routes `LayrzUiL10n` lookups through the `layrz_i18n` translation engine. Once registered, every `layrz_ui` component automatically picks up your translations.
+**Included:**
+- **i18n binding** — Routes `LayrzUiL10n` lookups through the `layrz_i18n` translation engine. `layrz_ui` declares the contract with 133 English strings but has no i18n dependency; this adapter enables translation. Once registered, every `layrz_ui` component automatically picks up your translations.
+- **SDK model conversions** (coming soon) — Adapters converting `layrz_sdk` types into `layrz_ui` view types, so `layrz_ui` itself needs no dependency on `layrz_sdk`.
 
 ---
 
@@ -22,10 +24,10 @@ Add both packages to your `pubspec.yaml`:
 ```yaml
 dependencies:
   layrz_ui: ^0.0.9
-  layrz_ui_i18n: ^0.0.1
+  layrz_ui_extensions: ^0.0.1
 ```
 
-`layrz_ui_i18n` requires `layrz_ui >= 0.0.9` because that is where `LayrzUiL10n` was introduced. Both packages version independently.
+`layrz_ui_extensions` requires `layrz_ui >= 0.0.9` because that is where `LayrzUiL10n` was introduced. Both packages version independently.
 
 ---
 
@@ -35,7 +37,7 @@ dependencies:
 
 ```dart
 import 'package:layrz_i18n/layrz_i18n.dart';
-import 'package:layrz_ui_i18n/layrz_ui_i18n.dart';
+import 'package:layrz_ui_extensions/layrz_ui_extensions.dart';
 
 void main() async {
   final i18n = LayrzI18n(languages: [
@@ -125,18 +127,18 @@ You don't need to translate all 133 keys. Any key not present in the translation
 
 ---
 
-## No Dependency Between layrz_ui and layrz_i18n
+## Decoupled Architecture
 
-This architecture keeps the two packages independent:
+This package keeps `layrz_ui` lightweight by extracting bridging logic into `layrz_ui_extensions`:
 
-- `layrz_ui` is purely a design system with no translation engine dependency
-- `layrz_i18n` is a general-purpose translation tool with no UI dependency
-- `layrz_ui_i18n` is a thin adapter that bridges them
+- `layrz_ui` is purely a design system — no translation engine, no SDK, no heavy dependencies
+- `layrz_ui_extensions` contains adapters that route lookups and conversions through dependent packages
+- Each adapter is optional; apps choose which ones they need
 
 This means:
-- Apps using `layrz_ui` without i18n requirements have zero overhead
-- Apps using different translation engines can build their own adapters
-- Both packages can evolve and release independently
+- Apps using `layrz_ui` without i18n or SDK conversions have zero overhead
+- Apps using different translation engines or model types can build their own adapters
+- Both `layrz_ui` and its dependencies can evolve and release independently
 
 ---
 
@@ -157,4 +159,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## Who are we?
 
-**Golden M** is a software and hardware development company working on innovative and disruptive technologies. For more information, contact us at [sales@goldenm.com](mailto:sales@goldenm.com) or via WhatsApp at [+(507) 6979-3073](https://wa.me/50769793073?text="From%20layrz_ui_i18n%20flutter%20library.%20Hello").
+**Golden M** is a software and hardware development company working on innovative and disruptive technologies. For more information, contact us at [sales@goldenm.com](mailto:sales@goldenm.com) or via WhatsApp at [+(507) 6979-3073](https://wa.me/50769793073?text="From%20layrz_ui_extensions%20flutter%20library.%20Hello").

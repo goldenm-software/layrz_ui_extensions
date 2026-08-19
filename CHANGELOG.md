@@ -1,5 +1,9 @@
 # Changelog
 
+## Package Rename
+
+**Note**: This package was renamed from `layrz_ui_i18n` to `layrz_ui_extensions` to reflect its broader scope as a collection of adapters and type converters for Layrz packages. The `0.0.1` release and earlier versions were published under the old name and are now marked discontinued on pub.dev.
+
 ## 0.0.2
 
 - Upgraded `layrz_ui` dependency to `^0.0.9`.
@@ -32,15 +36,15 @@
 
 ## Installation
 
-Add both `layrz_ui` and `layrz_ui_i18n` to your `pubspec.yaml`:
+Add both `layrz_ui` and `layrz_ui_extensions` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
   layrz_ui: ^0.0.9
-  layrz_ui_i18n: ^0.0.1
+  layrz_ui_extensions: ^0.0.1
 ```
 
-`layrz_ui_i18n` requires `layrz_ui >= 0.0.9` because that is where `LayrzUiL10n` was introduced. Both packages version independently.
+`layrz_ui_extensions` requires `layrz_ui >= 0.0.9` because that is where `LayrzUiL10n` was introduced. Both packages version independently.
 
 ## Usage
 
@@ -49,7 +53,7 @@ Register the delegate and initialize the engine:
 ```dart
 import 'package:layrz_i18n/layrz_i18n.dart';
 import 'package:layrz_ui/layrz_ui.dart';
-import 'package:layrz_ui_i18n/layrz_ui_i18n.dart';
+import 'package:layrz_ui_extensions/layrz_ui_extensions.dart';
 
 void main() async {
   final i18n = LayrzI18n(languages: [...]);

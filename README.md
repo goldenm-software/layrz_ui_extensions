@@ -24,7 +24,7 @@ Add both packages to your `pubspec.yaml`:
 ```yaml
 dependencies:
   layrz_ui: ^0.0.9
-  layrz_ui_extensions: ^0.0.1
+  layrz_ui_extensions: ^0.0.2
 ```
 
 `layrz_ui_extensions` requires `layrz_ui >= 0.0.9` because that is where `LayrzUiL10n` was introduced. Both packages version independently.

@@ -1,6 +1,6 @@
 name: layrz_ui_extensions
 description: "Adapters and extensions bridging layrz_sdk and other Layrz packages into layrz_ui, including i18n bindings and model conversions."
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/goldenm-software/layrz_ui_extensions
 repository: https://github.com/goldenm-software/layrz_ui_extensions
 issue_tracker: https://github.com/goldenm-software/layrz_ui_extensions/issues

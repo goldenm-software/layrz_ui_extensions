@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.2
+
+- Upgraded `layrz_ui` dependency to `^0.0.9`.
+
 ## 0.0.1
 
 **Initial release.** An adapter binding `layrz_ui`'s `LayrzUiL10n` contract to the `layrz_i18n` translation engine.

@@ -7,20 +7,29 @@ import 'package:layrz_ui_extensions/layrz_ui_extensions.dart';
 void main() {
   group('LayrzUiI18n', () {
     test('can be instantiated with a LayrzI18n engine', () {
-      final mockEngine = LayrzI18n(languages: [], currentLocale: const Locale('en'));
+      final mockEngine = LayrzI18n(
+        languages: [],
+        currentLocale: const Locale('en'),
+      );
       final adapter = LayrzUiI18n(i18n: mockEngine);
       expect(adapter, isNotNull);
       expect(adapter.i18n, equals(mockEngine));
     });
 
     test('delegate extends LayrzUiL10nDelegate', () {
-      final mockEngine = LayrzI18n(languages: [], currentLocale: const Locale('en'));
+      final mockEngine = LayrzI18n(
+        languages: [],
+        currentLocale: const Locale('en'),
+      );
       final delegate = LayrzUiI18nDelegate(mockEngine);
       expect(delegate, isA<LayrzUiL10nDelegate>());
     });
 
     test('delegate is supported for all locales', () {
-      final mockEngine = LayrzI18n(languages: [], currentLocale: const Locale('en'));
+      final mockEngine = LayrzI18n(
+        languages: [],
+        currentLocale: const Locale('en'),
+      );
       final delegate = LayrzUiI18nDelegate(mockEngine);
       expect(delegate.isSupported(const Locale('en')), isTrue);
       expect(delegate.isSupported(const Locale('es')), isTrue);
@@ -28,7 +37,10 @@ void main() {
     });
 
     test('delegate load returns LayrzUiI18n instance', () async {
-      final mockEngine = LayrzI18n(languages: [], currentLocale: const Locale('en'));
+      final mockEngine = LayrzI18n(
+        languages: [],
+        currentLocale: const Locale('en'),
+      );
       final delegate = LayrzUiI18nDelegate(mockEngine);
       final localization = await delegate.load(const Locale('en'));
       expect(localization, isA<LayrzUiI18n>());

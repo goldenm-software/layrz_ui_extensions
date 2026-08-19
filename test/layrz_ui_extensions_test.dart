@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:layrz_i18n/layrz_i18n.dart';
 import 'package:layrz_ui/layrz_ui.dart';
-import 'package:layrz_ui_i18n/layrz_ui_i18n.dart';
+import 'package:layrz_ui_extensions/layrz_ui_extensions.dart';
 
 void main() {
   group('LayrzUiI18n', () {

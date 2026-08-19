@@ -1,5 +1,33 @@
 # Changelog
 
+## Package Rename
+
+**Note**: This package was renamed from `layrz_ui_i18n` to `layrz_ui_extensions` to reflect its broader scope as a collection of adapters and type converters for Layrz packages. The `0.0.1` release and earlier versions were published under the old name and are now marked discontinued on pub.dev.
+
+## 0.0.2
+
+**First release under the `layrz_ui_extensions` name, and the scope widens past i18n.**
+
+### Added
+
+- **`Avatar.toLayrzUi()`** — an extension on `layrz_sdk`'s `Avatar?` converting it to `layrz_ui`'s `LayrzAvatarSource` sealed hierarchy (`LayrzAvatarUrl`, `LayrzAvatarBase64`, `LayrzAvatarIcon`, `LayrzAvatarEmoji`). Declared on the **nullable** type, so a null avatar, `AvatarType.none`, and a type/payload mismatch all yield `null` — which is exactly how `LayrzAvatar` triggers its initials fallback. Callers write `LayrzAvatar(source: entity.avatar.toLayrzUi())` with no null check.
+
+- **`layrz_sdk: ^4.4.3`** as a dependency, required by the avatar conversion.
+
+### Changed
+
+- **`layrz_ui` raised to `^0.0.9`** — the version that introduced `LayrzUiL10n`.
+
+- **`lib/` restructured by concern.** The i18n binding moved to `lib/src/i18n/`, and the avatar conversion lives in `lib/src/sdk/`. The barrel `lib/layrz_ui_extensions.dart` exports both. Class names are unchanged — `LayrzUiI18n`, `LayrzUiI18nDelegate` and the 17 namespace mixins still describe the i18n concern; only the package grew broader.
+
+### Design Notes
+
+- **This package is why `layrz_ui` needs no `layrz_sdk` dependency.** `layrz_ui` defines its own `LayrzAvatarSource`; this package supplies the bridge. Apps holding SDK models convert at the boundary, and apps that do not never inherit the SDK's dependency tree.
+
+- **Type and payload can disagree, and that is handled.** The SDK's `Avatar` carries a `type` alongside four independently-nullable payload fields, so `Avatar(type: AvatarType.url, url: null)` is representable. The conversion returns `null` in that case rather than throwing, matching how `layrz_ui` previously rendered such avatars as initials. Empty strings are treated the same as missing.
+
+- **`layrz_icons` stays on 1.x.** `layrz_sdk 4.4.3` pins `layrz_icons: ^1.1.1`, and this package depends on both it and `layrz_ui`, so `layrz_ui` deliberately holds the same 1.x constraint. Raising either side alone would make this package unresolvable.
+
 ## 0.0.1
 
 **Initial release.** An adapter binding `layrz_ui`'s `LayrzUiL10n` contract to the `layrz_i18n` translation engine.
@@ -28,15 +56,15 @@
 
 ## Installation
 
-Add both `layrz_ui` and `layrz_ui_i18n` to your `pubspec.yaml`:
+Add both `layrz_ui` and `layrz_ui_extensions` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
   layrz_ui: ^0.0.9
-  layrz_ui_i18n: ^0.0.1
+  layrz_ui_extensions: ^0.0.2
 ```
 
-`layrz_ui_i18n` requires `layrz_ui >= 0.0.9` because that is where `LayrzUiL10n` was introduced. Both packages version independently.
+`layrz_ui_extensions` requires `layrz_ui >= 0.0.9` because that is where `LayrzUiL10n` was introduced. Both packages version independently.
 
 ## Usage
 
@@ -45,7 +73,7 @@ Register the delegate and initialize the engine:
 ```dart
 import 'package:layrz_i18n/layrz_i18n.dart';
 import 'package:layrz_ui/layrz_ui.dart';
-import 'package:layrz_ui_i18n/layrz_ui_i18n.dart';
+import 'package:layrz_ui_extensions/layrz_ui_extensions.dart';
 
 void main() async {
   final i18n = LayrzI18n(languages: [...]);

@@ -29,3 +29,5 @@ pubspec.lock
 .flutter-plugins-dependencies
 /build/
 /coverage/
+
+pubspec_overrides.yaml

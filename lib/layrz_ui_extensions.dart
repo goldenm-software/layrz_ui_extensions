@@ -9,3 +9,4 @@ export 'src/sdk/avatar.dart';
 export 'src/fonts/noto_sans.dart';
 export 'src/fonts/open_sans.dart';
 export 'src/fonts/inter.dart';
+export 'src/fonts/roboto.dart';

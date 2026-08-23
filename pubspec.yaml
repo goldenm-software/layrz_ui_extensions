@@ -19,6 +19,7 @@ dependencies:
   layrz_i18n: ^1.0.1
   layrz_ui: ^0.0.9
   layrz_sdk: ^4.4.3
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test: { sdk: flutter }

@@ -17,7 +17,7 @@ environment:
 dependencies:
   flutter: { sdk: flutter }
   layrz_i18n: ^1.0.1
-  layrz_ui: ^0.0.9
+  layrz_ui: ^0.0.13
   layrz_sdk: ^4.4.3
   http: ^1.2.2
 
@@ -27,3 +27,7 @@ dev_dependencies:
   layrz_icons: ^1.1.1
 
 flutter:
+
+# dependency_overrides:
+#   layrz_ui:
+#     path: ../layrz_ui

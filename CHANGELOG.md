@@ -1,8 +1,11 @@
 # Changelog
 
-## Package Rename
+## 0.0.3
 
-**Note**: This package was renamed from `layrz_ui_i18n` to `layrz_ui_extensions` to reflect its broader scope as a collection of adapters and type converters for Layrz packages. The `0.0.1` release and earlier versions were published under the old name and are now marked discontinued on pub.dev.
+### Added
+
+- Fonts! We added support for `Inter`, `Noto Sans`, `Open Sans` and `Roboto` fonts for `layrz_ui` through our CDNs.
+- Extended `LayrzUiI18n` to include new keys required on `layrz_ui 0.0.13`
 
 ## 0.0.2
 

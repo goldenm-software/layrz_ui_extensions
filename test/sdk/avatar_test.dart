@@ -1,5 +1,5 @@
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:layrz_icons/layrz_icons.dart';
 import 'package:layrz_sdk/layrz_sdk.dart';
 import 'package:layrz_ui/layrz_ui.dart';
 import 'package:layrz_ui_extensions/layrz_ui_extensions.dart';
@@ -93,10 +93,10 @@ void main() {
     // ===== AvatarType.icon Tests =====
     group('AvatarType.icon', () {
       test('returns LayrzAvatarIcon when icon is set', () {
-        const icon = LayrzIcon(
+        const icon = MdiRemapIcon(
           name: 'mdi-account',
-          codePoint: 983044,
-          family: LayrzFamily.materialDesignIcons,
+          tags: ['user', 'profile'],
+          data: MdiIcons.account,
         );
         const avatar = Avatar(type: AvatarType.icon, icon: icon);
 
@@ -109,17 +109,17 @@ void main() {
       });
 
       test('converts LayrzIcon.iconData correctly', () {
-        const icon = LayrzIcon(
-          name: 'mdi-heart',
-          codePoint: 983605,
-          family: LayrzFamily.materialDesignIcons,
+        const icon = MdiRemapIcon(
+          name: 'mdi-account',
+          tags: ['user', 'profile'],
+          data: MdiIcons.account,
         );
         const avatar = Avatar(type: AvatarType.icon, icon: icon);
 
         final result = avatar.toLayrzUi() as LayrzAvatarIcon;
         final iconData = result.icon;
 
-        expect(iconData.codePoint, 983605);
+        expect(iconData.codePoint, 983044);
         expect(iconData.fontFamily, 'Material Design Icons');
       });
 
@@ -129,19 +129,6 @@ void main() {
         final result = avatar.toLayrzUi();
 
         expect(result, isNull);
-      });
-
-      test('preserves different icon families', () {
-        const faIcon = LayrzIcon(
-          name: 'fa-heart',
-          codePoint: 62000,
-          family: LayrzFamily.fontAwesomeSolid,
-        );
-        const avatar = Avatar(type: AvatarType.icon, icon: faIcon);
-
-        final result = avatar.toLayrzUi() as LayrzAvatarIcon;
-
-        expect(result.icon.fontFamily, 'FontAwesomeSolid');
       });
     });
 
@@ -333,17 +320,17 @@ void main() {
       });
 
       test('icon conversion preserves name and codePoint', () {
-        const original = LayrzIcon(
-          name: 'mdi-star',
-          codePoint: 984109,
-          family: LayrzFamily.materialDesignIcons,
+        const icon = MdiRemapIcon(
+          name: 'mdi-account',
+          tags: ['user', 'profile'],
+          data: MdiIcons.account,
         );
-        const avatar = Avatar(type: AvatarType.icon, icon: original);
+        const avatar = Avatar(type: AvatarType.icon, icon: icon);
 
         final result = avatar.toLayrzUi() as LayrzAvatarIcon;
 
         // Note: we compare the converted IconData properties
-        expect(result.icon.codePoint, original.codePoint);
+        expect(result.icon.codePoint, icon.data.codePoint);
         expect(result.icon.fontFamily, 'Material Design Icons');
       });
 
@@ -368,10 +355,10 @@ void main() {
           const Avatar(type: AvatarType.base64, base64: 'base64data'),
           const Avatar(
             type: AvatarType.icon,
-            icon: LayrzIcon(
-              name: 'test',
-              codePoint: 0,
-              family: LayrzFamily.materialDesignIcons,
+            icon: MdiRemapIcon(
+              name: 'mdi-account',
+              tags: ['user', 'profile'],
+              data: MdiIcons.account,
             ),
           ),
           const Avatar(type: AvatarType.emoji, emoji: '🎉'),

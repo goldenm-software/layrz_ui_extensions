@@ -23,21 +23,21 @@ class OpenSansFont extends LayrzFont {
   const OpenSansFont() : super(name: 'Open Sans');
 
   @override
-  TextStyle get display => throw TextStyle(
+  TextStyle get display => TextStyle(
     fontFamily: 'Open Sans',
     fontWeight: FontWeight.w800,
     fontVariations: [FontVariation('wght', 800)],
   );
 
   @override
-  TextStyle get headline => throw TextStyle(
+  TextStyle get headline => TextStyle(
     fontFamily: 'Open Sans',
     fontWeight: FontWeight.w700,
     fontVariations: [FontVariation('wght', 700)],
   );
 
   @override
-  TextStyle get title => throw TextStyle(
+  TextStyle get title => TextStyle(
     fontFamily: 'Open Sans',
     fontWeight: FontWeight.w600,
     fontVariations: [FontVariation('wght', 600)],
@@ -51,7 +51,7 @@ class OpenSansFont extends LayrzFont {
   );
 
   @override
-  TextStyle get label => throw TextStyle(
+  TextStyle get label => TextStyle(
     fontFamily: 'Open Sans',
     fontWeight: FontWeight.w400,
     fontVariations: [FontVariation('wght', 400)],
@@ -61,7 +61,7 @@ class OpenSansFont extends LayrzFont {
   Future<void> load() async {
     final response = await http.get(Uri.parse('https://cdn.layrz.com/fonts/Open-Sans.ttf'));
     if (response.statusCode != 200) {
-      throw Exception('Failed to load Open Sans font from CDN');
+      Exception('Failed to load Open Sans font from CDN');
     }
 
     final loader = FontLoader('Open Sans');

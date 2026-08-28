@@ -4,6 +4,7 @@ version: 0.0.3
 homepage: https://github.com/goldenm-software/layrz_ui_extensions
 repository: https://github.com/goldenm-software/layrz_ui_extensions
 issue_tracker: https://github.com/goldenm-software/layrz_ui_extensions/issues
+documentation: https://github.com/goldenm-software/layrz_ui/wiki
 topics:
   - i18n
   - localization
@@ -20,6 +21,7 @@ dependencies:
   layrz_ui: ^0.0.13
   layrz_sdk: ^4.4.4
   http: ^1.2.2
+  go_router: ^14.6.0
 
 dev_dependencies:
   flutter_test: { sdk: flutter }
@@ -28,6 +30,6 @@ dev_dependencies:
 
 flutter:
 
-# dependency_overrides:
-#   layrz_ui:
-#     path: ../layrz_ui
+dependency_overrides:
+  layrz_ui:
+    path: ../layrz_ui

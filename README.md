@@ -14,6 +14,58 @@ Adapters and extensions bridging Layrz packages into `layrz_ui` — including th
 **Included:**
 - **i18n binding** — Routes `LayrzUiL10n` lookups through the `layrz_i18n` translation engine. `layrz_ui` declares the contract with 133 English strings but has no i18n dependency; this adapter enables translation. Once registered, every `layrz_ui` component automatically picks up your translations.
 - **SDK model conversions** (coming soon) — Adapters converting `layrz_sdk` types into `layrz_ui` view types, so `layrz_ui` itself needs no dependency on `layrz_sdk`.
+- **go_router transition bridge** — `LayrzTransitionPage`, a `CustomTransitionPage` pre-wired with a `layrz_ui` page transition and the design system's transition duration, so a go_router app no longer repeats the same `transitionsBuilder` / `transitionDuration` boilerplate on every route.
+
+---
+
+## Page transitions
+
+`layrz_ui` ships its page transitions (`LayrzPageTransitions`) as bare builder functions on purpose — the design system has exactly three dependencies and must not take on `go_router` as a fourth. That keeps `layrz_ui` lightweight, but it pushes the wiring onto every route a go_router app declares:
+
+```dart
+// Before — every route repeats this
+GoRoute(
+  path: '/detail',
+  pageBuilder: (context, state) => CustomTransitionPage(
+    key: state.pageKey,
+    child: const DetailPage(),
+    transitionsBuilder: LayrzPageTransitions.fade,
+    transitionDuration: LayrzPageTransitions.durationOf(context),
+  ),
+);
+```
+
+`layrz_ui_extensions` is allowed to depend on `go_router`, so it is the right place for the missing convenience layer. `LayrzTransitionPage` collapses the snippet above to:
+
+```dart
+// After
+GoRoute(
+  path: '/detail',
+  pageBuilder: (context, state) => LayrzTransitionPage.fade(
+    key: state.pageKey,
+    context: context,
+    child: const DetailPage(),
+  ),
+);
+```
+
+A named constructor exists for every `LayrzPageTransitions` builder — `.fade`, `.slide`, `.scale`, `.rotation`, `.none` — plus an unnamed constructor that takes a `LayrzTransitionType` for callers holding a runtime value (for example, a single app-wide transition setting):
+
+```dart
+GoRoute(
+  path: '/detail',
+  pageBuilder: (context, state) => LayrzTransitionPage(
+    type: settings.transitionType,
+    key: state.pageKey,
+    context: context,
+    child: const DetailPage(),
+  ),
+);
+```
+
+`LayrzTransitionPage<T>` stays generic over the same pop-result type `CustomTransitionPage<T>` is, and forwards every parameter a real route needs — `key`, `name`, `arguments`, `restorationId`, `maintainState`, `fullscreenDialog`, `opaque`, `barrierDismissible`, `barrierColor`, `barrierLabel`.
+
+**Pass `context` when you have it.** `CustomTransitionPage.transitionDuration` is a plain field read once, at construction time, by go_router's underlying route — unlike `transitionsBuilder`, it cannot be resolved lazily from a later, themed `BuildContext`. go_router's own `pageBuilder: (context, state) => ...` always hands back a context positioned under `LayrzApp`'s installed theme, so passing it lets `LayrzTransitionPage` resolve the real `LayrzPageTransitions.durationOf(context)` token. Omit `context` (or use it from somewhere with no `LayrzTheme` ancestor) and it falls back to the raw `kPageTransitionDuration` constant (250ms) instead of throwing — the same value the token resolves to under a default theme. Pass `transitionDuration` explicitly to override either path.
 
 ---
 

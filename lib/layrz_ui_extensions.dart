@@ -5,6 +5,9 @@ export 'src/i18n/delegate.dart';
 // SDK Model Conversions
 export 'src/sdk/avatar.dart';
 
+// Transitions
+export 'src/transitions/transitions.dart';
+
 // Fonts
 export 'src/fonts/noto_sans.dart';
 export 'src/fonts/open_sans.dart';

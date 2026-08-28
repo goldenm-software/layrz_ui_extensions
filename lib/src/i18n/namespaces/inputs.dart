@@ -24,40 +24,50 @@ mixin LayrzUiI18nInputsMixin on LayrzUiL10n {
   String get durationUnitHourPlural => i18n.t('duration.unit.hour.plural');
 
   @override
-  String get durationUnitMinuteSingular => i18n.t('duration.unit.minute.singular');
+  String get durationUnitMinuteSingular =>
+      i18n.t('duration.unit.minute.singular');
 
   @override
   String get durationUnitMinutePlural => i18n.t('duration.unit.minute.plural');
 
   @override
-  String get durationUnitSecondSingular => i18n.t('duration.unit.second.singular');
+  String get durationUnitSecondSingular =>
+      i18n.t('duration.unit.second.singular');
 
   @override
   String get durationUnitSecondPlural => i18n.t('duration.unit.second.plural');
 
   @override
-  String get durationUnitDayShortSingular => i18n.t('duration.unit.day.short.singular');
+  String get durationUnitDayShortSingular =>
+      i18n.t('duration.unit.day.short.singular');
 
   @override
-  String get durationUnitDayShortPlural => i18n.t('duration.unit.day.short.plural');
+  String get durationUnitDayShortPlural =>
+      i18n.t('duration.unit.day.short.plural');
 
   @override
-  String get durationUnitHourShortSingular => i18n.t('duration.unit.hour.short.singular');
+  String get durationUnitHourShortSingular =>
+      i18n.t('duration.unit.hour.short.singular');
 
   @override
-  String get durationUnitHourShortPlural => i18n.t('duration.unit.hour.short.plural');
+  String get durationUnitHourShortPlural =>
+      i18n.t('duration.unit.hour.short.plural');
 
   @override
-  String get durationUnitMinuteShortSingular => i18n.t('duration.unit.minute.short.singular');
+  String get durationUnitMinuteShortSingular =>
+      i18n.t('duration.unit.minute.short.singular');
 
   @override
-  String get durationUnitMinuteShortPlural => i18n.t('duration.unit.minute.short.plural');
+  String get durationUnitMinuteShortPlural =>
+      i18n.t('duration.unit.minute.short.plural');
 
   @override
-  String get durationUnitSecondShortSingular => i18n.t('duration.unit.second.short.singular');
+  String get durationUnitSecondShortSingular =>
+      i18n.t('duration.unit.second.short.singular');
 
   @override
-  String get durationUnitSecondShortPlural => i18n.t('duration.unit.second.short.plural');
+  String get durationUnitSecondShortPlural =>
+      i18n.t('duration.unit.second.short.plural');
 
   @override
   String get durationReset => i18n.t('duration.reset');
@@ -81,7 +91,8 @@ mixin LayrzUiI18nInputsMixin on LayrzUiL10n {
   String get inputsCharacterCountOf => i18n.t('inputs.characterCount.of');
 
   @override
-  String get inputsCharacterCountCharacters => i18n.t('inputs.characterCount.characters');
+  String get inputsCharacterCountCharacters =>
+      i18n.t('inputs.characterCount.characters');
 
   @override
   String get inputsNumberIncrement => i18n.t('inputs.number.increment');

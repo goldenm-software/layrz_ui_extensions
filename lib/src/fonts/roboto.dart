@@ -59,7 +59,9 @@ class RobotoFont extends LayrzFont {
 
   @override
   Future<void> load() async {
-    final response = await http.get(Uri.parse('https://cdn.layrz.com/fonts/Roboto.ttf'));
+    final response = await http.get(
+      Uri.parse('https://cdn.layrz.com/fonts/Roboto.ttf'),
+    );
     if (response.statusCode != 200) {
       Exception('Failed to load Roboto font from CDN');
     }

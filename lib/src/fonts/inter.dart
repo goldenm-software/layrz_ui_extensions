@@ -59,7 +59,9 @@ class InterFont extends LayrzFont {
 
   @override
   Future<void> load() async {
-    final response = await http.get(Uri.parse('https://cdn.layrz.com/fonts/Inter.ttf'));
+    final response = await http.get(
+      Uri.parse('https://cdn.layrz.com/fonts/Inter.ttf'),
+    );
     if (response.statusCode != 200) {
       Exception('Failed to load Inter font from CDN');
     }

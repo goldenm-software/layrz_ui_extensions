@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.0.4
+
+### Changed
+
+- **`layrz_ui` raised to `^0.0.26`** — the version that introduces the `MdiRemapIcon`-based `LayrzAvatarIcon` model.
+
+- **`Avatar.toLayrzUi()`** (`LayrzAvatarSourceConverterX.toLayrzUi`) updated for the new model — the icon case now passes the SDK `Avatar`'s `MdiRemapIcon` straight through to `LayrzAvatarIcon`, since `layrz_sdk`'s `Avatar.icon` is already an `MdiRemapIcon` via `layrz_sdk ^4.4.6`. Avatar conversion tests updated to read the icon's code point through `MdiRemapIcon.iconData`.
+
+- **`layrz_sdk` raised to `^4.4.6`.**
+
+- **`flutter_material_design_icons` moved to regular dependencies**, and **`flutter_mdi_remap: ^1.0.0`** added — needed for the `MdiRemapIcon` type shared with `layrz_ui` and `layrz_sdk`.
+
 ## 0.0.3
 
 ### Added

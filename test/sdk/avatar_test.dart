@@ -104,8 +104,8 @@ void main() {
 
         expect(result, isA<LayrzAvatarIcon>());
         final layrzIcon = result as LayrzAvatarIcon;
-        expect(layrzIcon.icon.codePoint, 983044);
-        expect(layrzIcon.icon.fontFamily, 'Material Design Icons');
+        expect(layrzIcon.icon.iconData.codePoint, 983044);
+        expect(layrzIcon.icon.iconData.fontFamily, 'Material Design Icons');
       });
 
       test('converts LayrzIcon.iconData correctly', () {
@@ -117,10 +117,8 @@ void main() {
         const avatar = Avatar(type: AvatarType.icon, icon: icon);
 
         final result = avatar.toLayrzUi() as LayrzAvatarIcon;
-        final iconData = result.icon;
-
-        expect(iconData.codePoint, 983044);
-        expect(iconData.fontFamily, 'Material Design Icons');
+        expect(result.icon.iconData.codePoint, 983044);
+        expect(result.icon.iconData.fontFamily, 'Material Design Icons');
       });
 
       test('returns null when icon is null', () {
@@ -330,8 +328,8 @@ void main() {
         final result = avatar.toLayrzUi() as LayrzAvatarIcon;
 
         // Note: we compare the converted IconData properties
-        expect(result.icon.codePoint, icon.data.codePoint);
-        expect(result.icon.fontFamily, 'Material Design Icons');
+        expect(result.icon.iconData.codePoint, icon.data.codePoint);
+        expect(result.icon.iconData.fontFamily, 'Material Design Icons');
       });
 
       test('emoji conversion preserves original value', () {

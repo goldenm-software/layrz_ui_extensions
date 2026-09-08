@@ -59,7 +59,9 @@ class NotoSansFont extends LayrzFont {
 
   @override
   Future<void> load() async {
-    final response = await http.get(Uri.parse('https://cdn.layrz.com/fonts/Noto-Sans.ttf'));
+    final response = await http.get(
+      Uri.parse('https://cdn.layrz.com/fonts/Noto-Sans.ttf'),
+    );
     if (response.statusCode != 200) {
       Exception('Failed to load Noto Sans font from CDN');
     }

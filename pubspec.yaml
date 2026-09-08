@@ -1,9 +1,10 @@
 name: layrz_ui_extensions
 description: "Adapters and extensions bridging layrz_sdk and other Layrz packages into layrz_ui, including i18n bindings and model conversions."
-version: 0.0.2
+version: 0.0.4
 homepage: https://github.com/goldenm-software/layrz_ui_extensions
 repository: https://github.com/goldenm-software/layrz_ui_extensions
 issue_tracker: https://github.com/goldenm-software/layrz_ui_extensions/issues
+documentation: https://github.com/goldenm-software/layrz_ui/wiki
 topics:
   - i18n
   - localization
@@ -17,14 +18,16 @@ environment:
 dependencies:
   flutter: { sdk: flutter }
   layrz_i18n: ^1.0.1
-  layrz_ui: ^0.0.13
-  layrz_sdk: ^4.4.4
+  layrz_ui: ^0.0.26
+  layrz_sdk: ^4.4.6
   http: ^1.2.2
+  go_router: ^14.6.0
+  flutter_mdi_remap: ^1.0.0
+  flutter_material_design_icons: ^3.1.0+7447
 
 dev_dependencies:
   flutter_test: { sdk: flutter }
   flutter_lints: ^6.0.0
-  flutter_material_design_icons: ^3.1.0+7447
 
 flutter:
 

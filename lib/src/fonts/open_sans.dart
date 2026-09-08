@@ -59,7 +59,9 @@ class OpenSansFont extends LayrzFont {
 
   @override
   Future<void> load() async {
-    final response = await http.get(Uri.parse('https://cdn.layrz.com/fonts/Open-Sans.ttf'));
+    final response = await http.get(
+      Uri.parse('https://cdn.layrz.com/fonts/Open-Sans.ttf'),
+    );
     if (response.statusCode != 200) {
       Exception('Failed to load Open Sans font from CDN');
     }

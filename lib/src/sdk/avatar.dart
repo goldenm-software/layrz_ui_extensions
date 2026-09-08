@@ -57,7 +57,7 @@ extension LayrzAvatarSourceConverterX on Avatar? {
       case AvatarType.icon:
         // Guard: icon field must be set; LayrzIcon.iconData converts to IconData
         if (self.icon != null) {
-          return LayrzAvatarIcon(self.icon!.iconData);
+          return LayrzAvatarIcon(self.icon!);
         }
         return null;
 

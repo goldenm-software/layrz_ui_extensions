@@ -8,7 +8,8 @@ mixin LayrzUiI18nSteppersMixin on LayrzUiL10n {
   ///
   /// Default: "Back"
   @override
-  String get steppersPreviousButtonLabel => i18n.t('steppers.previousButtonLabel');
+  String get steppersPreviousButtonLabel =>
+      i18n.t('steppers.previousButtonLabel');
 
   /// Localized text for the "Next" / forward button in a stepper.
   ///

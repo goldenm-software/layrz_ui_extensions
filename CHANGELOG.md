@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-prerelease.1
+
+- Preparation of stable release of `layrz_ui`
+
 ## 0.0.4
 
 ### Changed

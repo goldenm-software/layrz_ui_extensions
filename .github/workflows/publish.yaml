@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-alpha.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-beta.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-rc.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-prerelease.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-dev.[0-9]+"
 
 jobs:
   prechecks:
@@ -16,8 +21,8 @@ jobs:
           submodules: true
       - name: Check tag format
         run: |
-          if [[ ! "${GITHUB_REF}" =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "Tag ${GITHUB_REF} does not match required format vX.Y.Z"
+          if [[ ! "${GITHUB_REF}" =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+(-(alpha|beta|rc|prerelease|dev)(\.[0-9]+)?)?$ ]]; then
+            echo "Tag ${GITHUB_REF} does not match required format vX.Y.Z or vX.Y.Z-<alpha|beta|rc|prerelease|dev>[.N]"
             exit 1
           fi
 

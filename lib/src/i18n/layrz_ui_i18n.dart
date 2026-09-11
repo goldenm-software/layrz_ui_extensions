@@ -1,6 +1,7 @@
 import 'package:layrz_i18n/layrz_i18n.dart';
 import 'package:layrz_ui/layrz_ui.dart';
 
+import 'delegate.dart';
 import 'namespaces/about.dart';
 import 'namespaces/actions.dart';
 import 'namespaces/calendar.dart';
@@ -65,4 +66,33 @@ class LayrzUiI18n extends LayrzUiL10n
   /// support `Map<String, dynamic>` arguments for interpolation.
   @override
   final LayrzI18n i18n;
+
+  /// Builds a [LocalizationsDelegate] that loads [LayrzUiI18n] over [i18n].
+  ///
+  /// Mirrors the spirit of `LayrzUiL10n.delegate` and
+  /// `GlobalWidgetsLocalizations.delegate`: drop the result straight into
+  /// `LayrzApp.localizationsDelegates` without constructing
+  /// [LayrzUiI18nDelegate] yourself. Unlike those zero-argument accessors this
+  /// is a factory method, because the i18n adapter needs the [LayrzI18n] engine
+  /// to translate.
+  ///
+  /// Register it **before** `LayrzUiL10n.delegate` so it takes precedence, with
+  /// the English default remaining as the fallback:
+  ///
+  /// ```dart
+  /// final engine = LayrzI18n(languages: [...]);
+  /// await engine.load();
+  /// LayrzApp(
+  ///   localizationsDelegates: [
+  ///     LayrzUiI18n.delegate(engine),
+  ///     LayrzUiL10n.delegate,
+  ///   ],
+  ///   // ...
+  /// )
+  /// ```
+  ///
+  /// Arguments:
+  /// - [i18n] is the [LayrzI18n] instance the delegate loads translations from.
+  static LayrzUiL10nDelegate delegate(LayrzI18n i18n) =>
+      LayrzUiI18nDelegate(i18n);
 }

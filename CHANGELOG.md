@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-prerelease.2
+
+- Added the static `LayrzUiI18n.delegate(engine)` factory, which returns a `LocalizationsDelegate` ready to drop into `LayrzApp.localizationsDelegates` without constructing `LayrzUiI18nDelegate` yourself, mirroring the new `LayrzUiL10n.delegate` accessor.
+- **`layrz_ui` raised to `^1.0.0-prerelease.3`** — the version that introduces the `LayrzUiL10n.delegate` accessor this factory aligns with.
+
 ## 1.0.0-prerelease.1
 
 - Preparation of stable release of `layrz_ui`

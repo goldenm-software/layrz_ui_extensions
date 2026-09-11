@@ -46,5 +46,29 @@ void main() {
       expect(localization, isA<LayrzUiI18n>());
       expect(localization, isA<LayrzUiL10n>());
     });
+
+    group('LayrzUiI18n.delegate static factory', () {
+      test('returns a LayrzUiI18nDelegate wrapping the engine', () {
+        final mockEngine = LayrzI18n(
+          languages: [],
+          currentLocale: const Locale('en'),
+        );
+        final delegate = LayrzUiI18n.delegate(mockEngine);
+        expect(delegate, isA<LayrzUiI18nDelegate>());
+        expect(delegate, isA<LayrzUiL10nDelegate>());
+        expect((delegate as LayrzUiI18nDelegate).i18n, equals(mockEngine));
+      });
+
+      test('load resolves LayrzUiI18n over the engine', () async {
+        final mockEngine = LayrzI18n(
+          languages: [],
+          currentLocale: const Locale('en'),
+        );
+        final delegate = LayrzUiI18n.delegate(mockEngine);
+        final localization = await delegate.load(const Locale('en'));
+        expect(localization, isA<LayrzUiI18n>());
+        expect((localization as LayrzUiI18n).i18n, equals(mockEngine));
+      });
+    });
   });
 }

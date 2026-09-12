@@ -65,6 +65,31 @@ void main() {
     });
   });
 
+  group('LayrzOrm.clearErrors', () {
+    test('empties the store', () {
+      LayrzOrm.setErrors({
+        'name': [
+          {'code': 'required'},
+        ],
+        'email': [
+          {'code': 'invalid'},
+        ],
+      });
+      expect(LayrzOrm.hasErrors('name'), isTrue);
+
+      LayrzOrm.clearErrors();
+      expect(LayrzOrm.getErrors('name'), isEmpty);
+      expect(LayrzOrm.hasErrors('name'), isFalse);
+      expect(LayrzOrm.hasGroupedErrors(['name', 'email']), isFalse);
+    });
+
+    test('is a safe no-op on an already-empty store', () {
+      expect(LayrzOrm.hasErrors('name'), isFalse);
+      expect(() => LayrzOrm.clearErrors(), returnsNormally);
+      expect(LayrzOrm.getErrors('name'), isEmpty);
+    });
+  });
+
   group('LayrzOrm.getErrors', () {
     test('unknown key returns an empty list', () {
       expect(LayrzOrm.getErrors('unknownKey'), isEmpty);
@@ -349,6 +374,39 @@ void main() {
 
       expect(capturedContext.hasErrors('name'), isTrue);
       expect(capturedContext.hasErrors('email'), isFalse);
+    });
+
+    testWidgets('clearErrors delegates to LayrzOrm.clearErrors', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(800, 600);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+
+      LayrzOrm.setErrors({
+        'name': [
+          {'code': 'required'},
+        ],
+      });
+
+      late BuildContext capturedContext;
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Builder(
+            builder: (context) {
+              capturedContext = context;
+              return const SizedBox();
+            },
+          ),
+        ),
+      );
+
+      expect(capturedContext.hasErrors('name'), isTrue);
+
+      capturedContext.clearErrors();
+      expect(capturedContext.hasErrors('name'), isFalse);
+      expect(LayrzOrm.getErrors('name'), isEmpty);
     });
 
     testWidgets('hasGroupedErrors delegates to LayrzOrm.hasGroupedErrors', (

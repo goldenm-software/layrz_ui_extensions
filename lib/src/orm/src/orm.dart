@@ -31,6 +31,14 @@ class LayrzOrm {
     _errors = errors ?? {};
   }
 
+  /// Clears all stored validation errors.
+  ///
+  /// Equivalent to [setErrors] with `null`. After this, [getErrors] returns an
+  /// empty list for every key and [hasErrors]/[hasGroupedErrors] return false.
+  static void clearErrors() {
+    _errors = {};
+  }
+
   /// Returns the translated list of errors for the given field [key].
   ///
   /// Arguments:
@@ -115,6 +123,9 @@ extension LayrzOrmExtension on BuildContext {
   /// - [errors] is the new error map, keyed by field name. Passing `null`
   ///   clears the store entirely.
   void setErrors(Map<String, dynamic>? errors) => LayrzOrm.setErrors(errors);
+
+  /// Clears all stored validation errors. See [LayrzOrm.clearErrors].
+  void clearErrors() => LayrzOrm.clearErrors();
 
   /// Returns the translated list of errors for the given field [key],
   /// resolving translations against this context's [LayrzI18n] ancestor.

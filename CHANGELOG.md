@@ -3,7 +3,7 @@
 ## 1.0.0-prerelease.3
 
 - The `Inter`, `Noto Sans`, `Open Sans` and `Roboto` fonts now register a browser `@font-face` on web via `registerOnWeb()`, so DOM-rendered text uses the intended font instead of falling back to a generic sans-serif. Previously `load()` only registered them with the Flutter engine canvas.
-- Added `LayrzOrm`, a validation-error helper: a static error store plus a `BuildContext` extension. `setErrors(Map?)` (null clears), `getErrors(key)` → `List<String>`, `hasErrors(key)`, and `hasGroupedErrors(keys)` (true if any key has errors). Error codes translate via `LayrzI18n` resolved from context — context-only, independent of `layrz_ui`'s own localization.
+- Added `LayrzOrm`, a validation-error helper: a static error store plus a `BuildContext` extension. `setErrors(Map?)` (null clears), `getErrors(key)` → `List<String>`, `hasErrors(key)`, `hasGroupedErrors(keys)` (true if any key has errors), and `clearErrors()` (clears all stored errors, equivalent to `setErrors(null)`). Error codes translate via `LayrzI18n` resolved from context — context-only, independent of `layrz_ui`'s own localization.
 
 ## 1.0.0-prerelease.2
 

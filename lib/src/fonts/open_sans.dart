@@ -70,6 +70,21 @@ class OpenSansFont extends LayrzFont {
     loader.addFont(Future.value(ByteData.view(response.bodyBytes.buffer)));
     await loader.load();
   }
+
+  /// Registers the Open Sans CDN font as a browser `@font-face`.
+  ///
+  /// [load] only makes the font available to the Flutter engine canvas; DOM-rendered
+  /// content (such as native `<input>` elements) resolves CSS `font-family` against the
+  /// browser's own font registry, which [load] never touches. This override registers
+  /// the same CDN file there too, so DOM-rendered text on web also uses Open Sans instead
+  /// of silently falling back to a generic sans-serif.
+  @override
+  Future<void> registerOnWeb() async {
+    await registerWebFont(
+      family: name,
+      url: 'https://cdn.layrz.com/fonts/Open-Sans.ttf',
+    );
+  }
 }
 
 /// Open Sans font from the Layrz CDN.

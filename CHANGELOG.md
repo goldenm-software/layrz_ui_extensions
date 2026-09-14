@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0
+
+- Stable release!
+
 ## 1.0.0-rc.1
 
 - Upgraded go_router to ^18.0.1.

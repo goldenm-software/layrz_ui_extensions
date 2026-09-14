@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-rc.1
+
+- Upgraded go_router to ^18.0.1.
+
 ## 1.0.0-prerelease.3
 
 - The `Inter`, `Noto Sans`, `Open Sans` and `Roboto` fonts now register a browser `@font-face` on web via `registerOnWeb()`, so DOM-rendered text uses the intended font instead of falling back to a generic sans-serif. Previously `load()` only registered them with the Flutter engine canvas.

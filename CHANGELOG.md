@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Added the `AvatarInput` ↔ `LayrzAvatarSource` bridge: `AvatarInput?.toLayrzUi()` (`LayrzAvatarInputConverterX`), a write-model forward converter mirroring `Avatar.toLayrzUi()`, and `LayrzAvatarSource?.toAvatarInput()` (`LayrzAvatarSourceToInputX`), the reverse converter for turning a `LayrzDynamicAvatarInput` selection back into the `AvatarInput` payload the API expects.
+
 ## 1.0.0
 
 - Stable release!

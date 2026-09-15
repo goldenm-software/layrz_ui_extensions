@@ -7,6 +7,7 @@ export 'src/orm/orm.dart';
 
 // SDK Model Conversions
 export 'src/sdk/avatar.dart';
+export 'src/sdk/avatar_input.dart';
 
 // Transitions
 export 'src/transitions/transitions.dart';

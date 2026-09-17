@@ -2,7 +2,7 @@ import 'package:layrz_ui/layrz_ui.dart' as ui;
 import 'package:layrz_sdk/layrz_sdk.dart' as sdk;
 
 extension UiColorblindConverterX on ui.ColorblindMode {
-  sdk.ColorblindMode toSdk(double strength) {
+  sdk.ColorblindMode get toSdk {
     switch (this) {
       case .protanopia:
         return sdk.ColorblindMode.protanopia;
@@ -23,7 +23,7 @@ extension UiColorblindConverterX on ui.ColorblindMode {
 }
 
 extension SdkColorblindConverterX on sdk.ColorblindMode {
-  ui.ColorblindMode toUi(double strength) {
+  ui.ColorblindMode get toUi {
     switch (this) {
       case sdk.ColorblindMode.protanopia:
         return ui.ColorblindMode.protanopia;

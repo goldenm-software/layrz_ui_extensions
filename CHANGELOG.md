@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+- Correction of the extension methods for `ui.ColorblindMode` and `sdk.ColorblindMode` to use getters instead of methods with a `strength` parameter.
+
 ## 1.1.1
 
 - Added `ui.ColorblindMode` ↔ `sdk.ColorblindMode` bridge: `ui.ColorblindMode.toSdk(strength)` (`UiColorblindConverterX`), a forward converter, and `sdk.ColorblindMode.toUi(strength)` (`SdkColorblindConverterX`), the reverse converter. Both require a `strength` parameter and return the corresponding enum value.

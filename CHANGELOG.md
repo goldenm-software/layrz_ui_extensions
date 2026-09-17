@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- Added `ui.ColorblindMode` ↔ `sdk.ColorblindMode` bridge: `ui.ColorblindMode.toSdk(strength)` (`UiColorblindConverterX`), a forward converter, and `sdk.ColorblindMode.toUi(strength)` (`SdkColorblindConverterX`), the reverse converter. Both require a `strength` parameter and return the corresponding enum value.
+
 ## 1.1.0
 
 - Added `LayrzTimeOfDay` ↔ `TimeOfDay` bridge: `LayrzTimeOfDay?.toSdk()` (`TimeOfDayConverterX`), a forward converter, and `TimeOfDay?.toLayrzUi()` (`LayrzTimeOfDayConverterX`), the reverse converter. Both are null-safe and return null for null input.

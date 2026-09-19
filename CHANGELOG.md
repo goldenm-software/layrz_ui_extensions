@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+- Added the SDK `Connection` → `LayrzConnectionTimes` bridge: `Connection?.toUi` (`LayrzConnectionTimesConverterX`), a forward-only converter for `LayrzConnectionIndicator`'s threshold config. Maps `Connection.online`/`Connection.hibernation` to `LayrzConnectionTimes.online`/`.idle`, falling back to `LayrzConnectionTimes.defaults()` for either field when null; `LayrzConnectionTimes.offline` has no SDK counterpart and always takes the default. Returns null for null input.
+- `layrz_ui` raised to `^1.3.0` and `layrz_sdk` raised to `^4.6.0`.
+
 ## 1.1.2
 
 - Correction of the extension methods for `ui.ColorblindMode` and `sdk.ColorblindMode` to use getters instead of methods with a `strength` parameter.

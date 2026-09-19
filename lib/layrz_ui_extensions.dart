@@ -9,6 +9,8 @@ export 'src/orm/orm.dart';
 export 'src/sdk/avatar.dart';
 export 'src/sdk/avatar_input.dart';
 export 'src/sdk/time_of_day.dart';
+export 'src/sdk/colorblind_mode.dart';
+export 'src/sdk/connection_indicator.dart';
 
 // Transitions
 export 'src/transitions/transitions.dart';

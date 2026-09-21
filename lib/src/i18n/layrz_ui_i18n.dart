@@ -5,6 +5,7 @@ import 'delegate.dart';
 import 'namespaces/about.dart';
 import 'namespaces/actions.dart';
 import 'namespaces/calendar.dart';
+import 'namespaces/connection.dart';
 import 'namespaces/date_time_pickers.dart';
 import 'namespaces/dual_list.dart';
 import 'namespaces/dynamic_avatar.dart';
@@ -22,7 +23,7 @@ import 'namespaces/weekdays.dart';
 
 /// Adapter that implements [LayrzUiL10n] by delegating to a [LayrzI18n] engine.
 ///
-/// Overrides all 133 members across 17 namespace mixins, mapping each to the
+/// Overrides all 141 members across 18 namespace mixins, mapping each to the
 /// corresponding dotted-key lookup in the i18n engine. Organized by namespace
 /// to match the order in [LayrzUiL10n] for navigability.
 ///
@@ -40,6 +41,7 @@ class LayrzUiI18n extends LayrzUiL10n
         LayrzUiI18nActionsMixin,
         LayrzUiI18nAboutMixin,
         LayrzUiI18nCalendarMixin,
+        LayrzUiI18nConnectionMixin,
         LayrzUiI18nDateTimePickersMixin,
         LayrzUiI18nDualListMixin,
         LayrzUiI18nDynamicAvatarMixin,

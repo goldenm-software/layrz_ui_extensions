@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0
+
+- Added the Connection i18n namespace (`LayrzUiI18nConnectionMixin`), routing `LayrzConnectionIndicator`'s state-label, appended-timestamp and time-ago strings to the backend engine (`connection.state.*`, `connection.stateWithTimeAgo`, `connection.timeAgo.*`). Fixes the indicator rendering untranslated labels under the i18n adapter.
+- `layrz_ui` raised to `^1.4.0`.
+
 ## 1.2.0
 
 - Added the SDK `Connection` → `LayrzConnectionTimes` bridge: `Connection?.toUi` (`LayrzConnectionTimesConverterX`), a forward-only converter for `LayrzConnectionIndicator`'s threshold config. Maps `Connection.online`/`Connection.hibernation` to `LayrzConnectionTimes.online`/`.idle`, falling back to `LayrzConnectionTimes.defaults()` for either field when null; `LayrzConnectionTimes.offline` has no SDK counterpart and always takes the default. Returns null for null input.
